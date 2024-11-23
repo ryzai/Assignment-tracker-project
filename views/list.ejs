@@ -1,0 +1,15 @@
+<% include ./partials/header %>
+<h2>All Assignments</h2>
+<ul>
+    <% assignments.forEach(assignment => { %>
+        <li>
+            <strong><%= assignment.title %></strong> - <%= assignment.subject %>
+            (<%= assignment.status %>, Priority: <%= assignment.priority %>)
+            <a href="/assignments/edit/<%= assignment._id %>">Edit</a>
+            <form action="/assignments/<%= assignment._id %>?_method=DELETE" method="POST" style="display:inline;">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+    <% }) %>
+</ul>
+<% include ./partials/footer %>

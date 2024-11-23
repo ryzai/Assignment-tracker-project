@@ -1,0 +1,26 @@
+<form action="<%= assignment._id ? `/assignments/${assignment._id}?_method=PUT` : '/assignments' %>" method="POST">
+    <label for="title">Title</label>
+    <input type="text" name="title" id="title" value="<%= assignment.title || '' %>" required />
+
+    <label for="subject">Subject</label>
+    <input type="text" name="subject" id="subject" value="<%= assignment.subject || '' %>" required />
+
+    <label for="dueDate">Due Date</label>
+    <input type="date" name="dueDate" id="dueDate" value="<%= assignment.dueDate ? assignment.dueDate.toISOString().split('T')[0] : '' %>" required />
+
+    <label for="status">Status</label>
+    <select name="status" id="status">
+        <option value="Not Started" <%= assignment.status === 'Not Started' ? 'selected' : '' %>>Not Started</option>
+        <option value="In Progress" <%= assignment.status === 'In Progress' ? 'selected' : '' %>>In Progress</option>
+        <option value="Completed" <%= assignment.status === 'Completed' ? 'selected' : '' %>>Completed</option>
+    </select>
+
+    <label for="priority">Priority</label>
+    <select name="priority" id="priority">
+        <option value="High" <%= assignment.priority === 'High' ? 'selected' : '' %>>High</option>
+        <option value="Medium" <%= assignment.priority === 'Medium' ? 'selected' : '' %>>Medium</option>
+        <option value="Low" <%= assignment.priority === 'Low' ? 'selected' : '' %>>Low</option>
+    </select>
+
+    <button type="submit"><%= assignment._id ? 'Update Assignment' : 'Add Assignment' %></button>
+</form>
