@@ -1,3 +1,8 @@
+const express = require('express');
+const router = express.Router();
+
+
+
 // Add new assignment form
 router.get('/add', (req, res) => res.render('form', { assignment: {} }));
 
@@ -33,3 +38,5 @@ router.get('/', async (req, res) => {
     const assignments = await Assignment.find();
     res.render('list', { assignments });
 });
+
+module.exports = router;
